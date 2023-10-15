@@ -1,38 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import logoProjeto from './assets/logoDona.png'
-import retangulo from  './assets/retanguloRoxo.png'
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Image style={styles.logo} source={logoProjeto}/>
-      <StatusBar style="auto" />
-      <Image style={styles.retanguloR} source={retangulo}/>
-    </View>
-  );
-  return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <Image style={styles.retanguloR} source={retangulo}/>
-    </View>
-  );
-}
+import React from 'react';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#CBA3D8',
-    alignItems: 'center',
+import {NavigationContainer} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-  },
+import Home from './src/pages/Home';
+import Menu from './src/pages/Menu';
 
-  logo:{
-    margin: 110,
-    height: 267,
-    width: 269,
+const Stack = createNativeStackNavigator();
 
+  export default function App(){
+    return(
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name='Login'component={Home} options={{
+            headerShown: false, // Para ocultar o cabeçalho
+          }}/>
+          <Stack.Screen name='Menu' component={Menu} options={{
+            headerShown: false, // Para ocultar o cabeçalho
+          }}/>
+          
+        </Stack.Navigator>
+      </NavigationContainer>
+    )
   }
-  }
-
-);
-
